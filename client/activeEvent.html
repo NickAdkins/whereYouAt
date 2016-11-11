@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wherYOUat</title>
+  <script src="https://use.fontawesome.com/555d412a05.js"></script>
+  <link href="main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="main-content">
+        <nav>
+            <img src="app-logo.jpg" alt="WhereYOUat? the best new app for organzing your group events!"/>
+            <ul>
+                <li>Welcome, [username]</li>
+                <li>Help</li>
+            </ul>
+        </nav>
+        <main>
+            <div class="event-header">
+                <h1>[event-name]</h1>
+                <h2>[event-location]</h2>
+                <h2>[event-date] @ [event-start-time]</h2>
+            </div>
+            <div class="event-description">
+                <h3>Organized by: [admin-names]</h3>
+                <p>[event-description]</p>
+            </div>
+            <div class="member-status">
+                <div class="arrived">
+                    <h2>Arrived</h2>
+                    <!-- repeat arrived-group div for each group that has arrived members-->
+                    <div class="arrived-group">
+                        <h3>[group-name]</h3>
+                        <ul>
+                            <li>[arrived-member-name]</li>
+                        </ul>
+                </div>
+                <!-- repeat waiting-on-group div for each group that has members who have not arrived-->
+                <div class="waiting-on">
+                    <h2>Waiting for:</h2>
+                    <div class="waiting-on-group">
+                        <h3>[group-name]</h3>
+                        <ul>
+                            <li>[arrived-member-name]<span class="eta">ETA: [member-eta]</span></li>
+                        </ul>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div id="about-app">
+                <h3>About</h3>
+                <p>WhereUat is made with love by Team WeHere to help you with organizing your events.
+            </div>
+            <div id="about-team">
+                <h3>About the Team</h3>
+                <p>WeHere are a team of passionate coders and designers. Bredyn McCombs and Ross Salanoa handle the backend, and Nick Adkins and Denise Nadal handle the front end.</p>
+            </div>
+            <p>WhereUat? copyright 2016 of Team WeHere.</p>
+        </footer>
+    </div>
+</body>
+</html>
