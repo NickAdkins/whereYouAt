@@ -3,9 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="modalCss.css">
   <title>wherYOUat</title>
 </head>
 <body>
-  This is the home page, login / sign up
+    <div id="main-content">
+        <button id='open-log-in'>Login</button>
+        <button id='open-sign-up'>Sign Up</button>
+
+        <div id="sign-upBG" class="modalBG">
+            <div id="sign-up">
+                <h3>Name</h3><input type="text">
+                <h3>Password</h3><input type="text">
+                <h3>Verify Password</h3><input type="text">
+                <h3>Email</h3><input type="text">
+                <h3>phone</h3><input type="text">
+                <input type="submit">
+                <button id="sign-up-close">Close</a>
+            </div>
+        </div>
+        <div id="loginBG" class="modalBG">
+            <div id="login">
+                <h3>Name</h3><input type="text">
+                <h3>Password</h3><input type="text">
+                <input type="submit">
+                <button id="login-close">Close</a>
+            </div>
+        </div>
+    </div>
+    <script src="whereYouAtJs.js"></script>
 </body>
 </html>
