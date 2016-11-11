@@ -62,19 +62,8 @@ function updateUser (req, res) {
         for (var key in req.body) {
             switch (key) {
                 case "deleteEvent":
-                    var ind = user.events.indexOf(req.body[key])
-                    if (ind !== -1){
-                        // user.events =
-                        // console.log(user.events.splice(ind, 1))
-                        user.events.splice(ind, 1)
-                        console.log(user.events)
-                    } else {
-                        err = {
-                            name:"ValidationError",
-                            message: config.INVALID_ID + req.body[key]
-                        }
-                        reportError(err, res)
-                    }
+                    deleteFromList(user.events, req.body[key], res)
+
                     break
                 case "addEvent":
                     if (user.events.indexOf(req.body[key])){
@@ -83,6 +72,8 @@ function updateUser (req, res) {
                     user.events.push(req.body[key])
                     break
                 case "deleteGroup":
+                    deleteFromList(user.groups, req.body[key], res)
+
                     break
                 case "addGroup":
                     if (user.groups.indexOf(req.body[key])){
@@ -92,6 +83,7 @@ function updateUser (req, res) {
 
                     break
                 case "deleteAdmin":
+                    deleteFromList(user.admin, req.body[key], res)
 
                     break
                 case "addAdmin":
@@ -102,19 +94,7 @@ function updateUser (req, res) {
 
                     break
                 case "deleteCaptain":
-                    var ind = user.events.indexOf(req.body[key])
-                    if (ind !== -1){
-                        // user.events =
-                        // console.log(user.events.splice(ind, 1))
-                        user.events.splice(ind, 1)
-                        console.log(user.events)
-                    } else {
-                        err = {
-                            name:"ValidationError",
-                            message: config.INVALID_ID + req.body[key]
-                        }
-                        reportError(err, res)
-                    }
+                    deleteFromList(user.captain, req.body[key], res)
                     break
                 case "addCaptain":
                     if (user.captain.indexOf(req.body[key])){
@@ -168,4 +148,20 @@ function reportError(err, res) {
         })
     }
 
+}
+
+function deleteFromList (list, item, res) {
+    var ind = list.indexOf(item)
+    if (ind !== -1){
+        // user.events =
+        // console.log(user.events.splice(ind, 1))
+        list.splice(ind, 1)
+        // console.log(list)
+    } else {
+        err = {
+            name:"ValidationError",
+            message: config.INVALID_ID + item
+        }
+        reportError(err, res)
+    }
 }
