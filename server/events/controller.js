@@ -28,6 +28,6 @@ function createUser (req, res) {
     return "create"
 }
 
-function updateUsers (req, res) {
+function updateUser (req, res) {
     return "update"
 }

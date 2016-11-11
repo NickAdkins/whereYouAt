@@ -29,9 +29,15 @@ var UserSchema = new mongoose.Schema ({
     groups: {
         type: [String],
         default: []
+    },
     captain: {
         type: [String],
         default: []
     },
-    phone: Number
+    phone: {
+        type:   String,
+        required: true
+    }
 })
+
+module.exports = mongoose.model("user", UserSchema)

@@ -41,14 +41,27 @@ app.use(skipper());
 // app.use(app.router);
 
 // app.use(require("./server/routes"));
-app.use("/users", require("./server/users/routes"));
-app.use("/events", require("./server/events/routes"));
-app.use("/groups", require("./server/groups/routes"));
+
+var userrouter = require("./server/users/routes")
+
 
 app.get("/",  function (req, res){
     res.sendFile(__dirname+"/client/index.html");
 
 });
+
+app.get("/users", userrouter.index);
+app.get("/users/:user", userrouter.retrieve);
+app.post("/users", userrouter.create)
+app.put("/users/:user", userrouter.update)
+app.delete("/users", userrouter.deleteAll)
+app.delete("/users/:user", userrouter.deleteOne)
+
+
+// app.get("/users", )
+
+
+
 
 // app.post('/login', passport.authenticate('local', {
 //     successRedirect:'/profile',
