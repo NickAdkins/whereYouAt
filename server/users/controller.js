@@ -20,16 +20,26 @@ function deleteAllUsers (req, res) {
 }
 
 function deleteUser (req, res) {
-    res.status(204).end('index');
+    findUser(req, res, function(user){
+        user.remove(function(err) {
+            if (err) return reportError(err, res)
+            res.status(204).end()
+        })
+    })
 
 }
 
 function indexUsers (req, res) {
-    res.status(200).end('index');
+    User.find(function (err, collection){
+        if (err) return reportError(err, res)
+        res.json(collection)
+    })
 }
 
 function retrieveUser (req, res) {
-    res.status(200).end('retrieve');
+    findUser(req, res, function (user){
+        res.status(200).json(user)
+    })
 }
 
 function createUser (req, res) {
@@ -48,7 +58,89 @@ function createUser (req, res) {
 }
 
 function updateUser (req, res) {
-    res.status(204).end('update');
+    findUser(req, res, function (user) {
+        for (var key in req.body) {
+            switch (key) {
+                case "deleteEvent":
+                    var ind = user.events.indexOf(req.body[key])
+                    if (ind !== -1){
+                        // user.events =
+                        // console.log(user.events.splice(ind, 1))
+                        user.events.splice(ind, 1)
+                        console.log(user.events)
+                    } else {
+                        err = {
+                            name:"ValidationError",
+                            message: config.INVALID_ID + req.body[key]
+                        }
+                        reportError(err, res)
+                    }
+                    break
+                case "addEvent":
+                    if (user.events.indexOf(req.body[key])){
+                        reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
+                    }
+                    user.events.push(req.body[key])
+                    break
+                case "deleteGroup":
+                    break
+                case "addGroup":
+                    if (user.groups.indexOf(req.body[key])){
+                        reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
+                    }
+                    user.groups.push(req.body[key])
+
+                    break
+                case "deleteAdmin":
+
+                    break
+                case "addAdmin":
+                    if (user.admin.indexOf(req.body[key])){
+                        reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
+                    }
+                    user.admin.push(req.body[key])
+
+                    break
+                case "deleteCaptain":
+                    var ind = user.events.indexOf(req.body[key])
+                    if (ind !== -1){
+                        // user.events =
+                        // console.log(user.events.splice(ind, 1))
+                        user.events.splice(ind, 1)
+                        console.log(user.events)
+                    } else {
+                        err = {
+                            name:"ValidationError",
+                            message: config.INVALID_ID + req.body[key]
+                        }
+                        reportError(err, res)
+                    }
+                    break
+                case "addCaptain":
+                    if (user.captain.indexOf(req.body[key])){
+                        reportError({name:"ValidationError", message:config.DUPLICATE_KEY + req.body[key]}, res)
+                    }
+                    user.captain.push(req.body[key])
+                    break
+                default:
+                // console.log(config.userKeys.indexOf('bob') !== -1)
+                    if (config.userKeys.indexOf(key) !== -1) {
+                        console.log("user " + user[key])
+                        console.log("body" + req.body[key])
+                        user[key] = req.body[key]
+                    } else {
+                        reportError({name:"ValidationError",message:config.INVALID_BODY + key}, res)
+                    }
+            }
+        }
+        user.save((function (err)
+		{
+			if (err) return reportError(err, res)
+
+            res.status(204).end()
+
+		}))
+    })
 }
 
 function findUser(req, res, success) {
@@ -75,4 +167,5 @@ function reportError(err, res) {
             error: err.message
         })
     }
+
 }
