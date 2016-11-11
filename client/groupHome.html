@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wherYOUat</title>
+  <script src="https://use.fontawesome.com/555d412a05.js"></script>
+  <link href="main.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="main-content">
+        <nav>
+            <img src="app-logo.jpg" alt="WhereYOUat? the best new app for organzing your group events!"/>
+            <ul>
+                <li>Welcome, [username]</li>
+                <li>Help</li>
+            </ul>
+        </nav>
+        <main>
+            <div class="event-card">
+                <div class="event-header">
+                    <h2>[event-name]</h2>
+                    <h3>[event-location]</h3>
+                    <h3>[event-date] @ [event-start-time]</h3>
+                </div>
+                <div class="event-description">
+
+                    <p>
+                        [event-description]
+                    </p>
+                </div>
+                <div class="edit-event">
+                    <i id="edit-event-icon" class="fa fa-pencil edit-button admin-only" aria-hidden="true"></i>
+                    
+                </div>
+                <div class="event-members">
+                    <h3>Admins: [event-admins]</h3>
+                    <div class="event-group">
+                        <h3>Captain:[captain-name]</h3>
+                        <h3>Members</h3>
+                        <ul>
+                            <li>[member-name]</li>
+                        </ul>
+                    </div>
+                    <div class="edit-members">
+                        <div class="button admin-only" id="add-captain"><p>Add Captain</p></div>
+                        <div class="button ac-only" id="add-member"><p>Add Member</p></div>
+                        <div class="button ac-only" id="remove-member"><p>Remove Member</p></div>
+                        <div class="button user-only" id="leave-group"><p>Leave Event</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="new-group" class="group-card">
+                <label for="new-group-admins"></label><input type="text" id="new-group-admins" name="admins" value="">
+                <label for="new-group-members"></label><input type="text" id="new-group-members" name="group-members" value="">
+            </div>
+        </main>
+        <footer>
+        </footer>
+    </div>
+</body>
+</html>
