@@ -38,3 +38,13 @@ var submitLogin = document.getElementById("send-login")
 submitLogin.onclick = function (){
     if ()
 }
+
+var init = function () {
+    var content = document.getElementById("content");
+    content.innerHTML = "";
+    var home = document.getElementById("homeTemplate");
+    var homeView = home.content.cloneNode(true);
+
+}
+
+init()

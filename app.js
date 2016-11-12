@@ -144,7 +144,7 @@ app.post('/login', passport.authenticate('local', {
 
 
 app.get("/",  function (req, res){
-    res.sendFile(__dirname+"/client/index.html");
+    res.sendFile(__dirname+"/client/newIndex.html");
 });
 
 app.get("/home", isLoggedIn, function(req, res){
