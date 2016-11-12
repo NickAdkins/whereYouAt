@@ -37,6 +37,10 @@ var UserSchema = new mongoose.Schema ({
     phone: {
         type:   String,
         required: true
+    },
+    salt: {
+        type:String,
+        required:true
     }
 })
 

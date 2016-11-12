@@ -1,0 +1,42 @@
+/*this is the file for the main css styles*/
+
+
+/*GLOBAL STYLES*/
+*{
+    padding:0;
+    margin:0;
+    position:relative;
+    box-sizing:border-box;
+}
+body, html{
+    font-size: 12px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding:0;
+    margin:0;
+    color:#4c3172 ;
+    background:#f4f0e9;
+    min-height:100vh;
+}
+p,ul,ol,figcaption,li,label,input,textarea{
+    font-size: 1.25rem;
+}
+ul,ol,li{display: inline;}
+
+
+/*HEADER , FOOTER AND SHARED ELEMENTS*/
+header, footer{
+    background:#4c3172;
+    color:#fff;
+}
+#app-logo{
+    font-family: 'Racing Sans One', cursive;
+    font-size: 5rem;
+    line-height:5rem;
+    color:#ea432d;
+}
+#nav{
+    bottom: 2rem;
+    position: absolute;
+    right: 2rem;
+}
+#nav li{padding:0 0 0 2rem;}

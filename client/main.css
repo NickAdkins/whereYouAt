@@ -1,1 +1,165 @@
 /*this is the file for the main css styles*/
+
+
+/*GLOBAL STYLES*/
+*{
+    padding:0;
+    margin:0;
+    position:relative;
+    box-sizing:border-box;
+}
+body, html{
+    font-size: 14px;
+    font-family: 'Source Sans Pro', sans-serif;
+    padding:0;
+    margin:0;
+    color:#4c3172 ;
+    background:#f4f0e9;
+    min-height:100vh;
+}
+p,ul,ol,figcaption,li,label,input,textarea,strong,em{font-size: 1.5rem;}
+input,textarea,img{max-width:100%;}
+ul,ol,li{display: inline;}
+.red{color:#ea432d;}
+.yellow{color:#ffb900;}
+h1{
+    text-transform:uppercase;
+    font-size:5rem;
+    font-weight: 700;
+    font-family: 'Oswald', sans-serif;
+}
+
+h2{
+    text-transform:uppercase;
+    font-size:2.5rem;
+    font-weight: 700;
+}
+h3{
+    text-transform:uppercase;
+    font-size:1.75rem;
+    font-weight: 700;
+}
+
+strong,label{font-weight: 700;}
+
+/*HEADER , FOOTER AND SHARED ELEMENTS*/
+header, footer{
+    background:#4c3172;
+    color:#f4f0e9;
+}
+#app-logo{
+    font-family: 'Racing Sans One', cursive;
+    font-size: 5rem;
+    line-height:5rem;
+    color:#ea432d;
+}
+#nav{
+    bottom: 2rem;
+    position: absolute;
+    right: 2rem;
+}
+#nav li{padding:0 0 0 2rem;}
+
+.event-card{
+    background: #06a4ea;
+    padding:2rem;
+    color:#f4f0e9 ;
+}
+
+.shadow{
+box-shadow:  0px 0px 2px 0px rgba(50, 50, 50, 0.75);}
+
+/*FORM ELEMENTS*/
+label + span{
+    padding:.5rem;
+    background:rgba(76,49,114,.3);
+}
+.inline-field{
+    padding:.5rem;
+    background:rgba(76,49,114,.3);
+    overflow: hidden;
+    display:block;
+}
+ input, textarea{
+    background:none;
+    font-size: 1.25rem;
+    font-weight: 300;
+    color:#f4f0e9;
+    border:none;
+}
+textarea{
+    margin:.5rem 0;
+    padding:.5rem;
+    background:rgba(76,49,114,.3);
+}
+.row label{
+    clear:left;
+    float:left;
+    margin-right: 2rem;
+}
+
+input:focus,textarea:focus{
+    outline:none;
+    border:none;
+    box-shadow: none;
+}
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    display:none;
+}
+
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  width:2rem;
+  height:2rem;
+  clear:none;
+}
+
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(76,49,114,.3);
+    box-shadow:0px 1px 2px 0px rgba(50, 50, 50, 0.2);
+
+}
+/* A11 Transition on displaying the checkbox/checkbox buttons */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+    content: '✔';
+    position: absolute;
+    left:0;
+    top: 0;
+    bottom:0;
+    font-size: 2rem;
+	text-align:center;
+	line-height:2rem;
+	width: 100%;
+    height: 100%;
+    color: #ffb900 ;
+	background:#ea432d ;
+	box-shadow:0px 1px 2px 0px rgba(50, 50, 50, 0.2);
+    transition: all .3s;
+}
+
+[type="checkbox"]:not(:checked) + label:after {
+    opacity:0;
+}
+
+[type="checkbox"]:checked + label:after {
+    opacity:1;
+}
+.save-button{
+    clear:both;
+    background:#ea432d;
+    color:#ffb900;
+    padding:1rem;
+    width:20rem;
+    border-radius:.25rem;
+    border: 1px solid #ffb900;
+}
