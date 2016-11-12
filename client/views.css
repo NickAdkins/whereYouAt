@@ -1,0 +1,28 @@
+#welcome-screen h1{
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 300;
+    text-transform: none;
+}
+#welcome-screen h1 span{
+    font-weight: 700;
+    font-style: italic;
+}
+.welcome-buttons{padding-top:4rem;}
+#sign-up,#login{
+    color:#efe7d3 ;
+    background:#a3b1b2;
+    padding-top: 3rem;
+}
+.exit{
+    position:absolute;
+    top:1rem;
+    right:1rem;
+}
+.exit i{
+    display:inline;
+    padding-left:1rem;
+    color:#685c5c;
+}
+#sign-up input{
+
+}

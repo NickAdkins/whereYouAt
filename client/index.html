@@ -7,6 +7,8 @@
   <title>wherYOUat</title>
   <script src="https://use.fontawesome.com/555d412a05.js"></script>
   <link href="main.css" rel="stylesheet" type="text/css" />
+  <link href="views.css" rel="stylesheet" type="text/css" />
+  <link href="//modalCss.css" rel="stylesheet" type="text/css" />
   <link href="simple-grid-edited.css" rel="stylesheet" type="text/css" />
   <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One|Oswald:700|Source+Sans+Pro:300,300i,700,700i" rel="stylesheet">
 </head>
@@ -23,37 +25,72 @@
         </header>
         <main><!-- end of shared template, begin dynamic content-->
 <!-- welcome screen for users who are not logged in-->
-            <div id="welcome-screen" class="col-12">
-                <h1>Welcome to <span class="yellow">Where U At?</span> the best app for organizing your group events!</h1>
-                <div class="button" id='open-log-in'>Login</div>
-                <div class="button" id='open-sign-up'>Sign Up</div>
+            <div class="row">
+                <div id="welcome-screen" class="col-12">
+                    <h1>Welcome to <span class="yellow">Where U At?</span> the best app for organizing your group events!</h1>
+                    <div class="col-6 col-6-sm welcome-buttons">
+                        <div class="button right" id='open-log-in'><p class="center">Login</p></div>
+                    </div>
+                    <div class="col-6 col-6-sm welcome-buttons">
+                        <div class="button left" id='open-sign-up'><p class="center">Sign Up</p></div>
+                    </div>
+                </div>
             </div>
 <!-- sign up screen-->
-            <div id="sign-upBG" class="modalBG">
-                <div id="sign-up" class="row">
-                    <label for="new-user-name" class="left">Name</label><input id="new-user-name" type="text" value="">
-                    <label for="new-user-password" class="left">Password</label><input id="new-user-password" type="text">
-                    <label for="new-user-verify-pass" class="left">Verify Password</label><input id="new-user-verify-pass" type="text">
-                    <label for="new-user-email" class="left">Email</label><input id="new-user-email" type="text">
-                    <label for="new-user-phone" class="left">Phone</label><input id="new-user-phone" type="text">
-                    <input id="new-user-sumbit" type="submit">
-                    <div class="exit" id="sign-up-close">
-                        <p>Exit</p><i class="fa fa-times" aria-hidden="true"></i>
+            <div class="row">
+                <div id="sign-upBG" class="modalBG">
+                    <div id="sign-up" class="row">
+                        <div class="exit right" id="sign-up-close">
+                            <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
+                        </div>
+                        <h2>Sign up for <span class="yellow">WhereUat?</span></h2>
+                        <div class="row slim">
+                            <label for="new-user-name" class="left">Name</label>
+                            <span class="shadow inline-field"><input id="new-user-name" type="text" value=""></span>
+                        </div>
+                        <div class="row slim">
+                            <label for="new-user-password" class="left">Password</label>
+                            <span class="shadow inline-field"><input id="new-user-password" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                            <label for="new-user-verify-pass" class="left">Verify Password</label>
+                            <span class="shadow inline-field"><input id="new-user-verify-pass" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                            <label for="new-user-email" class="left">Email</label>
+                            <span class="shadow inline-field"><input id="new-user-email" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                            <label for="new-user-phone" class="left">Phone</label>
+                            <span class="shadow inline-field"><input id="new-user-phone" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                            <input id="new-user-sumbit" class="button center" type="submit">
+                        </div>
                     </div>
                 </div>
             </div>
 <!-- login screen-->
-            <div id="loginBG" class="modalBG">
-                <div id="login">
-                    <label for="login-name" class="left">Name</label><input id="login-name" type="text">
-                    <label for="login-password" class="left">Password</label><input id="login-password" type="text">
-                    <input id="login-submit" type="submit">
-                    <div class="exit" id="login-close">
-                        <p>Exit</p><i class="fa fa-times" aria-hidden="true"></i>
+            <div class="row">
+                <div id="loginBG" class="modalBG">
+                    <div id="login" class="row">
+                        <div class="exit right" id="sign-up-close">
+                            <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
+                        </div>
+                        <div class="row slim">
+                            <label for="login-name" class="left">Name</label>
+                            <span class="shadow inline-field"><input id="login-name" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                        <label for="login-password" class="left">Password</label>
+                        <span class="shadow inline-field"><input id="login-password" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                            <input id="login-submit" class="button center" type="submit">
+                        </div>
                     </div>
                 </div>
             </div>
-
             <div id="groups-page" class="row">
 <!-- repeat event-card for each event user is a member of only show event header in default view, show rest after user clicks on card-->
                 <div class="event-card col-4 shadow row">
@@ -101,10 +138,11 @@
                     </div>
                 </div>
 <!-- modal for adding new event switch col size to at least 8 on modal-->
-                <div id="new-event" class="event-card shadow col-8">
-                    <i class="fa fa-plus fa-5x hidden center" aria-hidden="true"></i>
+                <div id="new-event" class="event-card shadow col-4">
+                    <i class="fa fa-plus fa-5x center" aria-hidden="true"></i>
                     <h2 class="col-12">New Event</h2>
-                    <div class="new-event-form">
+                    <!-- form hidden on load, make visible on click-->
+                    <div class="new-event-form hidden">
                         <div class="row slim">
                             <label class="left" for="new-event-name">Name of your event</label>
                             <span class="shadow inline-field"><input type="text" class="full-width" name="ne-name" id="new-event-name" value=""></span>

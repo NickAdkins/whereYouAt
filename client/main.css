@@ -17,7 +17,7 @@ body, html{
     background:#f4f0e9;
     min-height:100vh;
 }
-p,ul,ol,figcaption,li,label,input,textarea,strong,em{font-size: 1.5rem;}
+p,ul,ol,figcaption,li,label,input,textarea,strong,em,button{font-size: 1.5rem;}
 input,textarea,img{max-width:100%;}
 ul,ol,li{display: inline;}
 .red{color:#ea432d;}
@@ -41,7 +41,7 @@ h3{
 }
 
 strong,label{font-weight: 700;}
-
+i.fa{display:block;}
 /*HEADER , FOOTER AND SHARED ELEMENTS*/
 header, footer{
     background:#4c3172;
@@ -60,7 +60,7 @@ header, footer{
 }
 #nav li{padding:0 0 0 2rem;}
 
-.event-card{
+.event-card,.group-card{
     background: #06a4ea;
     padding:2rem;
     color:#f4f0e9 ;
@@ -68,7 +68,16 @@ header, footer{
 
 .shadow{
 box-shadow:  0px 0px 2px 0px rgba(50, 50, 50, 0.75);}
-
+.button{
+    clear:both;
+    background:#ea432d;
+    color:#ffb900;
+    padding:1rem;
+    width:20rem;
+    border-radius:.25rem;
+    border: 1px solid #ffb900;
+    display: block;
+}
 /*FORM ELEMENTS*/
 label + span{
     padding:.5rem;
