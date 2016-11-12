@@ -27,7 +27,7 @@ html,body {
 
 .justify {text-align: justify;}
 
-.hidden{display:none;}
+.hidden{display:none!important;}
 .show{display:block;}
 
 /* ==== GRID SYSTEM ==== */
