@@ -27,7 +27,6 @@ function deleteUser (req, res) {
             res.status(204).end()
         })
     })
-
 }
 
 function indexUsers (req, res) {
