@@ -15,24 +15,36 @@ var addNewCard = function(userData){
     container.insertBefore( newElement, container.firstChild );
 };
 
-var createTracker = new() XMLHttpRequest();
+var addForm = function(){
+    var container = document.getElementById("groups-page");
+    var pageTemplate = document.getElementById("userTemplate");
+    var newElement =  pageTemplate.content.cloneNode(true);
+    container.appendChild( newElement );
+    console.log("addForm ran");
+
+};
+
+
+var createTracker = new XMLHttpRequest();
 createTracker.onreadystatechange= function () {
     if (createTracker.readyState == XMLHttpRequest.DONE){
         if (createTracker.status < 400 && createTracker.status >=200) {
+            console.log("user added successfully!");
             addData(createTracker.responseText);
         }
         else {
             alert("is broken");
         }
     }
-    var query = "username="+document.getElementById("new-user-name")+"&fname=" +document.getElementById("new-first-name") + "&lname=" +document.getElementById("new-last-name") + "&phone=" document.getElementById("new-user-phone")
+    var query = "username="+document.getElementById("new-user-name")+"&fname=" +document.getElementById("new-first-name") + "&lname=" +document.getElementById("new-last-name") + "&phone=" +document.getElementById("new-user-phone")
     createTracker.open("POST", url);
     createTracker.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     createTracker.send(query);
 }
 
 var init = function () {
-    var getDB = new() XMLHttpRequest();
+    addForm();
+    var getDB = new XMLHttpRequest();
     getDB.onreadystatechange= function () {
         if (getDB.readyState == XMLHttpRequest.DONE){
             if (getDB.status < 400 && getDB.status >=200) {
@@ -45,5 +57,6 @@ var init = function () {
         getDB.open("GET", url);
         getDB.send();
     }
+    console.log("init ran");
 };
 init()
