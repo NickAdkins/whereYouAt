@@ -12,9 +12,13 @@ dark gray: #685c5c      rgba(104,92,92,1)
 **FONT & BOX SIZING**
 
 base body size: 12px
-font size: 1.5rem (18px)
+font size: 1.25rem (15px)
+h1: 5rem
+h2: 2.5rem
+h3:1.75rem
 padding: 2rem (24px)
 
 **fonts**
 body: source sans regular
+h1: oswald
 logo: racing sans one
