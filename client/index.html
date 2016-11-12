@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>wherYOUat</title>
   <script src="https://use.fontawesome.com/555d412a05.js"></script>
@@ -24,56 +25,30 @@
         </header>
         <main><!-- end of shared template, begin dynamic content-->
 <!-- welcome screen for users who are not logged in-->
-            <div class="row">
-                <div id="welcome-screen" class="col-12">
-                    <h1>Welcome to <span class="yellow">Where U At?</span> the best app for organizing your group events!</h1>
-                    <div class="col-6 col-6-sm welcome-buttons">
-                        <div class="button right" id='open-log-in'><p class="center">Login</p></div>
-                    </div>
-                    <div class="col-6 col-6-sm welcome-buttons">
-                        <div class="button left" id='open-sign-up'><p class="center">Sign Up</p></div>
-                    </div>
-                </div>
+            <div id="welcome-screen" class="col-12">
+                <h1>Welcome to <span class="yellow">Where U At?</span> the best app for organizing your group events!</h1>
+                <div class="button" id='open-log-in'>Login</div>
+                <div class="button" id='open-sign-up'>Sign Up</div>
             </div>
 <!-- sign up screen-->
-            <div class="row">
+            <div id="content">
                 <div id="sign-upBG" class="modalBG">
                     <div id="sign-up" class="row">
-                        <div class="exit right" id="sign-up-close">
-                            <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
-                        </div>
-                        <h2>Sign up for <span class="yellow">WhereUat?</span></h2>
-                        <div class="row slim">
-                            <label for="new-user-name" class="left">Name</label>
-                            <span class="shadow inline-field"><input id="new-user-name" type="text" value=""></span>
-                        </div>
-                        <div class="row slim">
-                            <label for="new-user-password" class="left">Password</label>
-                            <span class="shadow inline-field"><input id="new-user-password" type="text"></span>
-                        </div>
-                        <div class="row slim">
-                            <label for="new-user-verify-pass" class="left">Verify Password</label>
-                            <span class="shadow inline-field"><input id="new-user-verify-pass" type="text"></span>
-                        </div>
-                        <div class="row slim">
-                            <label for="new-user-email" class="left">Email</label>
-                            <span class="shadow inline-field"><input id="new-user-email" type="text"></span>
-                        </div>
-                        <div class="row slim">
-                            <label for="new-user-phone" class="left">Phone</label>
-                            <span class="shadow inline-field"><input id="new-user-phone" type="text"></span>
-                        </div>
-                        <div class="row slim">
-                            <input id="new-user-sumbit" class="button center" type="submit">
+                        <label for="new-user-name" class="left">Name</label><input id="new-user-name" type="text" value="">
+                        <label for="new-user-password" class="left">Password</label><input id="new-user-password" type="text">
+                        <label for="new-user-verify-pass" class="left">Verify Password</label><input id="new-user-verify-pass" type="text">
+                        <label for="new-user-email" class="left">Email</label><input id="new-user-email" type="text">
+                        <label for="new-user-phone" class="left">Phone</label><input id="new-user-phone" type="text">
+                        <input id="new-user-sumbit" type="submit">
+                        <div class="exit" id="sign-up-close">
+                            <p>Exit</p><i class="fa fa-times" aria-hidden="true"></i>
                         </div>
                     </div>
                 </div>
-            </div>
-<!-- login screen-->
-            <div class="row">
+    <!-- login screen-->
                 <div id="loginBG" class="modalBG">
-                    <div id="login" class="row">
-                        <div class="exit right" id="sign-up-close">
+                    <form id="login" class="row" action="/login">
+                        <div class="exit right" id="login-close">
                             <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
                         </div>
                         <div class="row slim">
@@ -87,64 +62,68 @@
                         <div class="row slim">
                             <input id="login-submit" class="button center" type="submit">
                         </div>
-                    </div>
+                    </form>
+
+
                 </div>
             </div>
-            <div id="groups-page" class="row slim">
-<!-- repeat event-card for each event user is a member of only show event header in default view, show rest after user clicks on card-->
-                <div class="event-card col-12 shadow row">
-                    <div class="event-header row slim">
-                        <h2>[event-name]</h2>
-                        <p><strong>[event-location]</strong><br>
-                        [event-date] @ [event-start-time]</p>
-                    </div><!-- end event header-->
-                    <div class="event-description row slim">
-                        <h3>Organized by: [admin-names]</h3>
-                        <p>[event-description]</p>
-                        <div class="edit-event">
-                            <i id="edit-event-icon" class="fa fa-pencil fa-3x edit-button admin-only" aria-hidden="true"></i>
+
+=======
+            <template id="homeTemplate">
+                <div id="groups-page" class="row slim">
+    <!-- repeat event-card for each event user is a member of only show event header in default view, show rest after user clicks on card-->
+                    <div class="event-card col-12 shadow row">
+                        <div class="event-header row slim">
+                            <h2>[event-name]</h2>
+                            <p><strong>[event-location]</strong><br>
+                            [event-date] @ [event-start-time]</p>
+                        </div><!-- end event header-->
+                        <div class="event-description row slim">
+                            <h3>Organized by: [admin-names]</h3>
+                            <p>[event-description]</p>
+                            <div class="edit-event">
+                                <i id="edit-event-icon" class="fa fa-pencil fa-3x edit-button admin-only" aria-hidden="true"></i>
     <!-- on click of edit-event-icon, load edit modal- modal should insert form fields from new-event, load data for current event -->
-                        </div><!-- end edit event-->
-                    </div><!-- end event description-->
-                    <div class="event-groups row slim">
-    <!-- Repeat event-group for each group in event-->
-                        <div class="event-group group-card shadow col-4 row">
-                            <!-- if captain, show captain-->
-                            <h3>Captain:[captain-name]</h3>
-                            <h3>Members</h3>
-                            <ul>
-                                <li>[member-name] <i class="fa fa-minus-square remove-member" aria-hidden="true"></i></li>
-                            </ul>
-                            <div class="event-group-edit">
-                                <!-- each of these should generate a confirmation/modal-->
-                                <div class="button ac-only" id="add-member"><p>Add Member</p></div>
-                            </div><!-- end group edit-->
-                        </div><!-- end group-->
-    <!-- show icon in event view, when div is clicked, show contents-->
-                        <div class="add-group group-card shadow col-8 row">
-                            <i class="fa fa-plus" aria-hidden="true"></i>
-                            <h2>Add New Group</h2>
-                            <div class="add-group-form">
-                                <label class="left" for="new-group-captain"></label>
-                                <span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
-                                <label class="left" for="add-make-admin">Allow captain to edit event?</label>
-                                <input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
-                                <label class="left" for="new-group-member"></label>
-                                <span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
-                                <!-- save button should exit new group modal-->
+                            </div><!-- end edit event-->
+                        </div><!-- end event description-->
+                        <div class="event-groups row slim">
+                        <!-- Repeat event-group for each group in event-->
+                            <div class="event-group group-card shadow col-4 row">
+                                <!-- if captain, show captain-->
+                                <h3>Captain:[captain-name]</h3>
+                                <h3>Members</h3>
+                                <ul>
+                                    <li>[member-name] <i class="fa fa-minus-square remove-member" aria-hidden="true"></i></li>
+                                </ul>
+                                <div class="event-group-edit">
+                                    <!-- each of these should generate a confirmation/modal-->
+                                    <div class="button ac-only" id="add-member"><p>Add Member</p></div>
+                                </div><!-- end group edit-->
+                            </div><!-- end group-->
+        <!-- show icon in event view, when div is clicked, show contents-->
+                            <div class="add-group group-card shadow col-8 row">
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <h2>Add New Group</h2>
+                                <div class="add-group-form">
+                                    <label class="left" for="new-group-captain"></label>
+                                    <span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
+                                    <label class="left" for="add-make-admin">Allow captain to edit event?</label>
+                                    <input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
+                                    <label class="left" for="new-group-member"></label>
+                                    <span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
+                                    <!-- save button should exit new group modal-->
                                 <div class="row">
                                     <div class="save-button center"><p>Save group</p></div>
                                 </div>
-                        </div>
+                            </div><!-- end add group form-->
                         </div><!-- end add group card-->
                     </div><!--end events-group row -->
                 </div><!--end event card -->
 <!-- modal for adding new event switch col size to at least 8 on modal-->
-                <div id="new-event" class="event-card shadow col-8 row">
-                    <i class="fa fa-plus fa-5x center" aria-hidden="true"></i>
+                <div id="new-event" class="event-card shadow col-8">
+                    <i class="fa fa-plus fa-5x hidden center" aria-hidden="true"></i>
                     <h2 class="col-12">New Event</h2>
-                    <!-- form hidden on load, make visible on click-->
-                    <div class="new-event-form col-12">
+                    <div class="new-event-form">
                         <div class="row slim">
                             <label class="left" for="new-event-name">Name of your event</label>
                             <span class="shadow inline-field"><input type="text" class="full-width" name="ne-name" id="new-event-name" value=""></span>
@@ -198,6 +177,7 @@
                     </div><!-- new event form div-->
                 </div><!-- end new event div-->
             </div><!-- END home-page row -->
+        </template>
 <!-- resume shared template-->
         </main>
         <footer>
@@ -214,6 +194,8 @@
             </div><!-- end copyright row-->
         </footer>
     </div>
+    <div id="map-canvas"></div>
+    <!-- <script type="text/javascript" src="main.js" defer></script> -->
     <script src="whereYouAtJs.js"></script>
 </body>
 </html>

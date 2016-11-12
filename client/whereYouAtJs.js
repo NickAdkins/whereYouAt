@@ -28,7 +28,13 @@ window.onclick = function(event) {
     if (event.target == openSignUp) {
         openSignUp.style.display = "none";
     }
-    else if (event.target == openLogin) {
+    if (event.target == openLogin) {
         openLogin.style.display = "none";
     }
+}
+
+var submitLogin = document.getElementById("send-login")
+
+submitLogin.onclick = function (){
+    if ()
 }
