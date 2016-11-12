@@ -38,3 +38,29 @@ var submitLogin = document.getElementById("send-login")
 submitLogin.onclick = function (){
     if ()
 }
+
+var createTracker = new() XMLHttpRequest();
+createTracker.onreadystatechange= function () {
+    if (createTracker.readyState == XMLHttpRequest.DONE){
+        if (createTracker.status < 400 && createTracker.status >=200) {
+
+        }
+        else {
+            alert("is broken")
+        }
+    }
+    var query = "username="+document.getElementById(uname)+"&fname=" +document.getElementById(fname) + "&lname=" +document.getElementById(lname) + "&phone=" document.getElementById(phone)
+    createTracker.open("POST", url);
+    createTracker.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    createTracker.send(query);
+}
+//
+// var init = function () {
+//     var content = document.getElementById("content");
+//     content.innerHTML = "";
+//     var home = document.getElementById("homeTemplate");
+//     var homeView = home.content.cloneNode(true);
+//
+// }
+//
+// init()
