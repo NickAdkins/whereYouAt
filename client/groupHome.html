@@ -20,10 +20,41 @@
                 </ul>
             </div><!-- end header row -->
         </header>
-        <main>
-            <div class="row">
-                <!-- repeat event-card for each event user is a member of
-                    only show event header in default view, show rest after user clicks on card-->
+        <main><!-- end of shared template, begin dynamic content-->
+<!-- welcome screen for users who are not logged in-->
+            <div id="welcome-screen" class="col-12">
+                <h1>Welcome to <span class="yellow">Where U At?</span> the best app for organizing your group events!</h1>
+                <div class="button" id='open-log-in'>Login</div>
+                <div class="button" id='open-sign-up'>Sign Up</div>
+            </div>
+<!-- sign up screen-->
+            <div id="sign-upBG" class="modalBG">
+                <div id="sign-up" class="row">
+                    <label for="new-user-name" class="left">Name</label><input id="new-user-name" type="text" value="">
+                    <label for="new-user-password" class="left">Password</label><input id="new-user-password" type="text">
+                    <label for="new-user-verify-pass" class="left">Verify Password</label><input id="new-user-verify-pass" type="text">
+                    <label for="new-user-email" class="left">Email</label><input id="new-user-email" type="text">
+                    <label for="new-user-phone" class="left">Phone</label><input id="new-user-phone" type="text">
+                    <input id="new-user-sumbit" type="submit">
+                    <div class="exit" id="sign-up-close">
+                        <p>Exit</p><i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+<!-- login screen-->
+            <div id="loginBG" class="modalBG">
+                <div id="login">
+                    <label for="login-name" class="left">Name</label><input id="login-name" type="text">
+                    <label for="login-password" class="left">Password</label><input id="login-password" type="text">
+                    <input id="login-submit" type="submit">
+                    <div class="exit" id="login-close">
+                        <p>Exit</p><i class="fa fa-times" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div id="groups-page" class="row">
+<!-- repeat event-card for each event user is a member of only show event header in default view, show rest after user clicks on card-->
                 <div class="event-card col-4 shadow row">
                     <div class="event-header">
                         <h2>[event-name]</h2>
@@ -36,12 +67,11 @@
                     </div><!-- end event description-->
                     <div class="edit-event">
                         <i id="edit-event-icon" class="fa fa-pencil edit-button admin-only" aria-hidden="true"></i>
-                        <!-- on click of edit-event-icon, load edit modal-
-                        modal should insert form fields from new-event, load data for current event -->
+<!-- on click of edit-event-icon, load edit modal- modal should insert form fields from new-event, load data for current event -->
                     </div><!-- end edit event-->
                     <div class="event-groups">
-                        <!-- Repeat event-group for each group in event-->
-                        <div class="event-group">
+    <!-- Repeat event-group for each group in event-->
+                        <div class="event-group group-card">
                             <!-- if captain, show captain-->
                             <h3>Captain:[captain-name]</h3>
                             <h3>Members</h3>
@@ -55,18 +85,21 @@
                                 <div class="button user-only" id="leave-group"><p>Leave Event</p></div>
                             </div><!-- end group edit-->
                         </div><!-- end group-->
-                        <!-- show icon in event view, when div is clicked, show contents-->
-                        <div class="add-group">
+    <!-- show icon in event view, when div is clicked, show contents-->
+                        <div class="add-group group-card">
                             <i class="fa fa-plus" aria-hidden="true"></i>
-                            <label class="left" for="new-group-captain"></label><span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
-                            <label class="left" for="add-make-admin">Allow captain to edit event?</label><input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
-                            <label class="left" for="new-group-member"></label><span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
+                            <label class="left" for="new-group-captain"></label>
+                            <span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
+                            <label class="left" for="add-make-admin">Allow captain to edit event?</label>
+                            <input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
+                            <label class="left" for="new-group-member"></label>
+                            <span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
                             <!-- save button should exit new group modal-->
                             <div class="save-button"><p>Save group</p></div>
                         </div>
                     </div>
                 </div>
-                <!-- modal for adding new event switch col size to at least 8 on modal-->
+<!-- modal for adding new event switch col size to at least 8 on modal-->
                 <div id="new-event" class="event-card shadow col-8">
                     <i class="fa fa-plus fa-5x hidden center" aria-hidden="true"></i>
                     <h2 class="col-12">New Event</h2>
@@ -123,7 +156,8 @@
                         <div class="save-button center"><p>Save changes</p></div>
                     </div><!-- new event form div-->
                 </div><!-- end new event div-->
-            </div><!-- END main row -->
+            </div><!-- END home-page row -->
+<!-- resume shared template-->
         </main>
         <footer>
             <div class="row">
@@ -139,5 +173,6 @@
             </div><!-- end copyright row-->
         </footer>
     </div>
+    <script src="whereYouAtJs.js"></script>
 </body>
 </html>
