@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wherYOUat</title>
+  <script src="https://use.fontawesome.com/555d412a05.js"></script>
+  <link href="main.css" rel="stylesheet" type="text/css" />
+  <link href="views.css" rel="stylesheet" type="text/css" />
+  <link href="//modalCss.css" rel="stylesheet" type="text/css" />
+  <link href="simple-grid-edited.css" rel="stylesheet" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Racing+Sans+One|Oswald:700|Source+Sans+Pro:300,300i,700,700i" rel="stylesheet">
+</head>
+<body>
+    <div id="main-content">
+        <header class="shadow">
+            <div class="row">
+                <h1 id="app-logo" class="left">Where U At?</h1>
+                <ul id="nav" class="right">
+                    <li>Welcome, [username]</li>
+                    <li>Help</li>
+                </ul>
+            </div><!-- end header row -->
+        </header>
+        <main>
+            <div class="row"><!-- end of shared template, begin dynamic content-->
+    <!-- welcome screen for users who are not logged in-->
+                <div id="welcome-screen" class="col-12">
+                    <h1>Welcome to <span class="yellow">Where U At?</span> the best app for organizing your group events!</h1>
+                    <div class="col-6 col-6-sm welcome-buttons">
+                        <div class="button right" id='open-log-in'><p class="center">Login</p></div>
+                    </div>
+                    <div class="col-6 col-6-sm welcome-buttons">
+                        <div class="button left" id='open-sign-up'>
+                            <p class="center">Sign Up</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    <!-- sign up screen-->
+                <div class="row">
+                    <div id="sign-upBG" class="modalBG">
+                        <div id="sign-up" class="row">
+                            <div class="exit right" id="sign-up-close">
+                                <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
+                            </div>
+                            <h2>Sign up for <span class="yellow">WhereUat?</span></h2>
+                            <div class="row slim">
+                                <label for="new-user-name" class="left">Name</label>
+                                <span class="shadow inline-field"><input id="new-user-name" type="text" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label for="new-user-password" class="left">Password</label>
+                                <span class="shadow inline-field"><input id="new-user-password" type="text"></span>
+                            </div>
+                            <div class="row slim">
+                                <label for="new-user-verify-pass" class="left">Verify Password</label>
+                                <span class="shadow inline-field"><input id="new-user-verify-pass" type="text"></span>
+                            </div>
+                            <div class="row slim">
+                                <label for="new-user-email" class="left">Email</label>
+                                <span class="shadow inline-field"><input id="new-user-email" type="text"></span>
+                            </div>
+                            <div class="row slim">
+                                <label for="new-user-phone" class="left">Phone</label>
+                                <span class="shadow inline-field"><input id="new-user-phone" type="text"></span>
+                            </div>
+                            <div class="row slim">
+                                <input id="new-user-sumbit" class="button center" type="submit">
+                            </div>
+                        </div><!--end sign up row -->
+                    </div><!-- end signupBG-->
+                </div><!-- end row-->
+        <!-- login screen-->
+                <div class="row">
+                    <div id="loginBG" class="modalBG">
+                        <form id="login" class="row" action="/login">
+                            <div class="exit right" id="login-close">
+                                <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
+                            </div>
+                            <div class="row slim">
+                                <label for="login-name" class="left">Name</label>
+                                <span class="shadow inline-field"><input id="login-name" type="text"></span>
+                            </div>
+                            <div class="row slim">
+                            <label for="login-password" class="left">Password</label>
+                            <span class="shadow inline-field"><input id="login-password" type="text"></span>
+                            </div>
+                            <div class="row slim">
+                                <input id="login-submit" class="button center" type="submit">
+                            </div>
+                        </form>
+                    </div><!-- end loginBG-->
+                </div>
+                <template id="homeTemplate">
+                    <div id="groups-page" class="row slim">
+        <!-- repeat event-card for each event user is a member of only show event header in default view, show rest after user clicks on card-->
+                        <div class="event-card col-12 shadow row">
+                            <div class="event-header row slim">
+                                <h2>[event-name]</h2>
+                                <p><strong>[event-location]</strong><br>
+                                [event-date] @ [event-start-time]</p>
+                            </div><!-- end event header-->
+                            <div class="event-description row slim">
+                                <h3>Organized by: [admin-names]</h3>
+                                <p>[event-description]</p>
+                                <div class="edit-event">
+                                    <i id="edit-event-icon" class="fa fa-pencil fa-3x edit-button admin-only" aria-hidden="true"></i>
+        <!-- on click of edit-event-icon, load edit modal- modal should insert form fields from new-event, load data for current event -->
+                                </div><!-- end edit event-->
+                            </div><!-- end event description-->
+                            <div class="event-groups row slim">
+                            <!-- Repeat event-group for each group in event-->
+                                <div class="event-group group-card shadow col-4 row">
+                                    <!-- if captain, show captain-->
+                                    <h3>Captain:[captain-name]</h3>
+                                    <h3>Members</h3>
+                                    <ul>
+                                        <li>[member-name] <i class="fa fa-minus-square remove-member" aria-hidden="true"></i></li>
+                                    </ul>
+                                    <div class="event-group-edit">
+                                        <!-- each of these should generate a confirmation/modal-->
+                                        <div class="button ac-only" id="add-member"><p>Add Member</p></div>
+                                    </div><!-- end group edit-->
+                                </div><!-- end group-->
+            <!-- show icon in event view, when div is clicked, show contents-->
+                                <div class="add-group group-card shadow col-8 row">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <h2>Add New Group</h2>
+                                    <div class="add-group-form">
+                                        <label class="left" for="new-group-captain"></label>
+                                        <span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
+                                        <label class="left" for="add-make-admin">Allow captain to edit event?</label>
+                                        <input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
+                                        <label class="left" for="new-group-member"></label>
+                                        <span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
+                                        <!-- save button should exit new group modal-->
+                                    <div class="row">
+                                        <div class="save-button center"><p>Save group</p></div>
+                                    </div>
+                                </div><!-- end add group form-->
+                            </div><!-- end add group card-->
+                        </div><!--end events-group row -->
+                    </div><!--end event card -->
+    <!-- modal for adding new event switch col size to at least 8 on modal-->
+                    <div id="new-event" class="event-card shadow col-8">
+                        <i class="fa fa-plus fa-5x hidden center" aria-hidden="true"></i>
+                        <h2 class="col-12">New Event</h2>
+                        <div class="new-event-form">
+                            <div class="row slim">
+                                <label class="left" for="new-event-name">Name of your event</label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" name="ne-name" id="new-event-name" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-location">Location</label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" name="ne-location" id="new-event-location" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-date">Event date</label>
+                                <span class="shadow"><input type="date" name="ne-date" id="new-event-date" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-start">When event starts</label>
+                                <span class="shadow"><input type="time" name="ne-start" id="new-event-start" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-end">When event ends</label>
+                                <span class="shadow"><input type="time" name="ne-end" id="new-event-end" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-notification">When to start tracking event</label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" name="ne-notif" id="new-event-notifcation" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-description">Description of your event</label>
+                                <textarea class="shadow col-12 slim" name="ne-description" id="new-event-description" rows="8" cols="40"></textarea>
+                            </div>
+                            <div class="row slim">
+                                <label class="left" for="new-event-group">Name of your group:</label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" name="ne-group" id="new-event-group" value=""></span>
+                            </div>
+                            <!-- user should be able to hit enter, member is added, and field reverts to empty so more members can be added-->
+                            <div class="row slim">
+                                <label class="left" for="new-event-group">Add member:</label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" name="ne-group" id="new-event-group" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label class="left">Make Captain? (Allow member to edit group)</label>
+                                <input type="checkbox" name="make-a-capt" id="make-capt" value="captain">
+                                <label for="make-capt" class="shadow"></label>
+                            </div>
+                            <div class="row slim">
+                                <label class="left">Make Admin? (Allow member to edit event)</label>
+                                <input type="checkbox" name="make-an-admin" id="make-admin" value="admin">
+                                <label for="make-admin" class="shadow"></label>
+                            </div>
+                            <div class="row slim">
+                            <!-- save button should exit new event modal-->
+                            <div class="save-button center"><p>Save changes</p></div>
+                        </div><!-- new event form div-->
+                    </div><!-- end new event div-->
+                </div><!-- END home-page row -->
+            </template>
+<!-- resume shared template-->
+        </main>
+        <footer>
+            <div class="row">
+                <div id="about-app" class="col-6 col-6-sm">
+                    <h3>About</h3>
+                    <p><span class="yellow">WhereUat</span> is made with love by Team WeHere to help you with organizing your events.
+                </div><!--end about col -->
+                <div id="about-team" class="col-6 col-6-sm">
+                    <h3>About the Team</h3>
+                    <p><span class="red">WeHere</span> are a team of passionate coders and designers. Bredyn McCombs and Ross Salanoa handle the backend, and Nick Adkins and Denise Nadal handle the front end.</p>
+                </div><!-- end team col-->
+                <p class="center col-12 "><span class="yellow">WhereUat?</span> copyright 2016 of Team WeHere.</p>
+            </div><!-- end copyright row-->
+        </footer>
+    </div>
+    <div id="map-canvas"></div>
+    <!-- <script type="text/javascript" src="main.js" defer></script> -->
+    <script src="whereYouAtJs.js"></script>
+</body>
+</html>

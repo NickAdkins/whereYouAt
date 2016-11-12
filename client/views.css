@@ -16,7 +16,7 @@
 }
 .exit{
     position:absolute;
-    top:1rem;
+    top:0rem;
     right:1rem;
 }
 .exit i{
@@ -27,10 +27,10 @@
 /*groups page*/
 .event-header h2{
     font-family: "Oswald", sans-serif;
-    font-size: 5rem;
+    font-size: 3.5rem;
 }
 .event-header strong{
-    font-size: 2.75rem;
+    font-size: 2.25rem;
 }
 .event-header p{
     font-size: 2rem;
@@ -48,4 +48,7 @@ i.remove-member{
     display: inline;
     color:#ffb900;
     padding-left: 1rem;
+}
+.new-user-form{
+    padding-top: 4rem;
 }

@@ -47,6 +47,7 @@ header, footer{
     background:#4c3172;
     color:#f4f0e9;
 }
+main{min-height:30vh;}
 #app-logo{
     font-family: 'Racing Sans One', cursive;
     font-size: 5rem;
