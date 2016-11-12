@@ -14,26 +14,22 @@ body, html{
     background: rgba(0,0,0,0.4)
 }
 
-#map-canvas{
-    height: 100%;
-}
-
 #sign-up {
     position: absolute;
     width: 400px;
-    height: 400px;
+    height: 550px;
     border-radius: 30px;
-    background: #ddd;
+    background: #fff;
     margin-left: calc(50% - 180px);
-    top:calc(50% - 150px);
+    top:calc(50% - 600px);
 }
 
 #login {
     position: absolute;
     width: 400px;
-    height: 200px;
+    height: 250px;
     border-radius: 30px;
-    background: #ddd;
+    background: #fff;
     margin-left: calc(50% - 180px);
-    top:calc(50% - 150px);
+    top:calc(50% - 550px);
 }

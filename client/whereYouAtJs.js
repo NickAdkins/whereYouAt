@@ -1,13 +1,10 @@
 var openSignUp = document.getElementById('sign-upBG');
 var openLogin = document.getElementById('loginBG');
-//
 var sign = document.getElementById("open-sign-up");
 var login = document.getElementById("open-log-in");
 var loginClose = document.getElementById("login-close");
 var signClose = document.getElementById("sign-up-close");
 
-//
-//
 sign.onclick = function() {
     openSignUp.style.display = "block";
 }
@@ -33,8 +30,10 @@ window.onclick = function(event) {
     }
 }
 
-var submitLogin = document.getElementById("send-login")
 
-submitLogin.onclick = function (){
-    if ()
+var success = function(data){
+    var submitLogin = document.getElementById("login-submit");
+    submitLogin.onclick = function (){
+        if (document.getElementById('login-name') != "")
+    }
 }
