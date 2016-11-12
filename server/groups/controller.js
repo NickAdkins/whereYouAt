@@ -1,4 +1,4 @@
-var Group = ('./model');
+var Group = require('./model');
 var config = require("../../config");
 
 module.exports = {
@@ -12,7 +12,7 @@ module.exports = {
 }
 
 function deleteAllGroups (req, res) {
-    User.remove({}, function(err){
+    Group.remove({}, function(err){
         if (err) {
             console.log(err)
         } else {
@@ -22,8 +22,8 @@ function deleteAllGroups (req, res) {
 }
 
 function deleteGroup (req, res) {
-    findUser(req, res, function(user){
-        user.remove(function(err) {
+    findUser(req, res, function(group){
+        group.remove(function(err) {
             if (err) return reportError(err, res)
             res.status(204).end()
         })
@@ -32,30 +32,30 @@ function deleteGroup (req, res) {
 }
 
 function indexGroups (req, res) {
-    User.find(function (err, collection){
+    Group.find(function (err, collection){
         if (err) return reportError(err, res)
         res.json(collection)
     })
 }
 
 function retrieveGroup (req, res) {
-    findUser(req, res, function (user){
-        res.status(200).json(user)
+    findUser(req, res, function (group){
+        res.status(200).json(group)
     })
 }
 
 function createGroup (req, res) {
   console.log('Controller is working');
   Group.create({
-    groupId: //how to generate mongoose id
+
     groupName: req.body.groupName,
-    groupCaptain: // group captain id
-    groupPlayers: //list of player [ids],
-    eventId: // id of event/s
+    groupCaptain: req.body.groupCaptain,
+    groupPlayers: req.body.groupPlayers,
+    eventId: req.body.eventId
   },
-  function (err, user) {
+  function (err, group) {
       if (err) return reportError(err, res)
-      res.status(201).json(user);
+      res.status(201).json(group);
     return "create"
   })
 }
@@ -65,12 +65,12 @@ function updateGroup (req, res) {
         for (var key in req.body) {
             switch (key) {
                 case "deleteEvent":
-                    var ind = user.events.indexOf(req.body[key])
+                    var ind = group.events.indexOf(req.body[key])
                     if (ind !== -1){
-                        // user.events =
-                        // console.log(user.events.splice(ind, 1))
-                        user.events.splice(ind, 1)
-                        console.log(user.events)
+                        // group.events =
+                        // console.log(group.events.splice(ind, 1))
+                        group.events.splice(ind, 1)
+                        console.log(group.events)
                     } else {
                         err = {
                             name:"ValidationError",
@@ -80,26 +80,26 @@ function updateGroup (req, res) {
                     }
                     break
                 case "addEvent":
-                    if (user.events.indexOf(req.body[key])){
+                    if (group.events.indexOf(req.body[key])){
                         reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
                     }
-                    user.events.push(req.body[key])
+                    group.events.push(req.body[key])
                     break
                 case "deleteUser":
                     break
                 case "addUser":
-                    if (groups.user.indexOf(req.body[key])){
+                    if (groups.group.indexOf(req.body[key])){
                         reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
                     }
-                    groups.user.push(req.body[key])
+                    groups.group.push(req.body[key])
                     break
                 case "deleteCaptain":
-                    var ind = user.events.indexOf(req.body[key])
+                    var ind = group.events.indexOf(req.body[key])
                     if (ind !== -1){
-                        // user.events =
-                        // console.log(user.events.splice(ind, 1))
-                        user.events.splice(ind, 1)
-                        console.log(user.events)
+                        // group.events =
+                        // console.log(group.events.splice(ind, 1))
+                        group.events.splice(ind, 1)
+                        console.log(group.events)
                     } else {
                         err = {
                             name:"ValidationError",
@@ -109,23 +109,23 @@ function updateGroup (req, res) {
                     }
                     break
                 case "addCaptain":
-                    if (user.captain.indexOf(req.body[key])){
+                    if (group.captain.indexOf(req.body[key])){
                         reportError({name:"ValidationError", message:config.DUPLICATE_KEY + req.body[key]}, res)
                     }
-                    user.captain.push(req.body[key])
+                    group.captain.push(req.body[key])
                     break
                 default:
                 // console.log(config.userKeys.indexOf('bob') !== -1)
                     if (config.userKeys.indexOf(key) !== -1) {
-                        console.log("user " + user[key])
+                        console.log("group " + group[key])
                         console.log("body" + req.body[key])
-                        user[key] = req.body[key]
+                        group[key] = req.body[key]
                     } else {
                         reportError({name:"ValidationError",message:config.INVALID_BODY + key}, res)
                     }
             }
         }
-        user.save((function (err)
+        group.save((function (err)
 		{
 			if (err) return reportError(err, res)
 
@@ -136,8 +136,8 @@ function updateGroup (req, res) {
 }
 
 function findGroup(req, res, success) {
-    var id = req.params.user
-    User.findById(id, function (err, item) {
+    var id = req.params.group
+    Group.findById(id, function (err, item) {
         if (err) return reportError(err, res)
         if (!item) {
             send404(res, config.INVALID_ID + "profile.")

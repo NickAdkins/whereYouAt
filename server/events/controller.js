@@ -1,5 +1,6 @@
-var Event = ('./model');
-var config = ('../../config');
+var Event = require('./model');
+var config = require('../../config');
+// console.log(new Event)
 
 module.exports = {
     deleteOne: deleteEvent,
@@ -11,7 +12,7 @@ module.exports = {
 }
 
 function deleteAllEvents (req, res) {
-    User.remove({}, function(err){
+    Event.remove({}, function(err){
         if (err) {
             console.log(err)
         } else {
@@ -21,8 +22,8 @@ function deleteAllEvents (req, res) {
 }
 
 function deleteEvent (req, res) {
-    findUser(req, res, function(user){
-        user.remove(function(err) {
+    findUser(req, res, function(event){
+        event.remove(function(err) {
             if (err) return reportError(err, res)
             res.status(204).end()
         })
@@ -30,36 +31,35 @@ function deleteEvent (req, res) {
 }
 
 function indexEvents (req, res) {
-    User.find(function (err, collection){
+    Event.find(function (err, collection) {
         if (err) return reportError(err, res)
         res.json(collection)
     })
 }
 
 function retrieveEvent (req, res) {
-    findUser(req, res, function (user){
-        res.status(200).json(user)
+    findUser(req, res, function (event){
+        res.status(200).json(event)
     })
 }
 
 function createEvent (req, res) {
   console.log('Controller Event is connected');
   Event.create({
-    eventId: //find the id for eventId
     eventName: req.body.eventName,
-    eventLocation: // google api lat & long
+    eventLocation: req.body.eventLocation,
     eventTime: req.body.eventTime,
     eventDescription: req.body.eventDescription
-  }
-  function (err, user) {
+}),
+  function (err, event) {
       if (err) return reportError(err, res)
-      res.status(201).json(user);
-  })
+      res.status(201).json(event).end();
+  }
 }
 
 function findEvent(req, res, success) {
-    var id = req.params.user
-    User.findById(id, function (err, item) {
+    var id = req.params.event
+    Event.findById(id, function (err, item) {
         if (err) return reportError(err, res)
         if (!item) {
             send404(res, config.INVALID_ID + "profile.")
@@ -74,39 +74,30 @@ function updateEvent (req, res) {
         for (var key in req.body) {
             switch (key) {
                 case "deleteEvent":
-                    deleteFromList(user.events, req.body[key], res)
+                    deleteFromList(event.events, req.body[key], res)
 
                     break
                 case "addEvent":
-                    if (user.events.indexOf(req.body[key])){
+                    if (event.events.indexOf(req.body[key])){
                         reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
                     }
-                    user.events.push(req.body[key])
+                    event.events.push(req.body[key])
                     break
                 case "deleteGroup":
-                    deleteFromList(user.groups, req.body[key], res)
+                    deleteFromList(event.groups, req.body[key], res)
 
                     break
                 case "addGroup":
-                    if (user.groups.indexOf(req.body[key])){
+                    if (event.groups.indexOf(req.body[key])){
                         reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
                     }
-                    user.groups.push(req.body[key])
+                    event.groups.push(req.body[key])
 
-                    break
-                case "deleteCaptain":
-                    deleteFromList(user.captain, req.body[key], res)
-                    break
-                case "addCaptain":
-                    if (user.captain.indexOf(req.body[key])){
-                        reportError({name:"ValidationError", message:config.DUPLICATE_KEY + req.body[key]}, res)
-                    }
-                    user.captain.push(req.body[key])
                     break
                 default:
                 // console.log(config.userKeys.indexOf('bob') !== -1)
                     if (config.userKeys.indexOf(key) !== -1) {
-                        console.log("user " + user[key])
+                        console.log("event " + event[key])
                         console.log("body" + req.body[key])
                         user[key] = req.body[key]
                     } else {

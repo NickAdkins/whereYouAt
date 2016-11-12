@@ -30,7 +30,7 @@ function deleteUser (req, res) {
 }
 
 function indexUsers (req, res) {
-    User.find(function (err, collection){
+    User.find(function (err, collection) {
         if (err) return reportError(err, res)
         res.json(collection)
     })
@@ -54,7 +54,7 @@ function createUser (req, res) {
         salt:           salt
 
     }, function (err, user) {
-        if (err){return reportError(err, res)} 
+        if (err){return reportError(err, res)}
         res.status(201).json(user);
     })
 }

@@ -9,4 +9,4 @@ var groupSchema = new mongoose.Schema({
   roundUpTime: {type: Date , required: true},
 });
 
-module.exports = mongoose.model('Group', groupSchema);
+module.exports = mongoose.model('Group', groupSchema)
