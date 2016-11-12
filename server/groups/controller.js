@@ -85,24 +85,13 @@ function updateGroup (req, res) {
                     }
                     user.events.push(req.body[key])
                     break
-                case "deleteGroup":
+                case "deleteUser":
                     break
-                case "addGroup":
-                    if (user.groups.indexOf(req.body[key])){
+                case "addUser":
+                    if (groups.user.indexOf(req.body[key])){
                         reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
                     }
-                    user.groups.push(req.body[key])
-
-                    break
-                case "deleteAdmin":
-
-                    break
-                case "addAdmin":
-                    if (user.admin.indexOf(req.body[key])){
-                        reportError({name:"ValidationError", message:config.INVALID_KEY + req.body[key]}, res)
-                    }
-                    user.admin.push(req.body[key])
-
+                    groups.user.push(req.body[key])
                     break
                 case "deleteCaptain":
                     var ind = user.events.indexOf(req.body[key])

@@ -3,15 +3,14 @@ var router = express.Router()
 var mongoose = require('mongoose');
 
 var eventSchema = new mongoose.Schema({
-  console.log('We are now creating an Event');
-  eventId: {type: number, unique: true},
-  eventName: {type: string, required: true}
+  eventName: {type: String, required: true}
   eventLocation:[
-    lat: {type: string, required: true},
-    long: {type: string, required: true}
+    lat: {type: String, required: true},
+    long: {type: String, required: true}
   ],
   eventTime: {type: Date, required: true},
-  eventDescription: {type: string}
+  eventDescription: {type: String},
+  group: {type: [String], default: []}
 });
 
 module.exports = mongoose.model('Event', eventSchema);
