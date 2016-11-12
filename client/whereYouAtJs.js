@@ -1,66 +1,49 @@
-var openSignUp = document.getElementById('sign-upBG');
-var openLogin = document.getElementById('loginBG');
-//
-var sign = document.getElementById("open-sign-up");
-var login = document.getElementById("open-log-in");
-var loginClose = document.getElementById("login-close");
-var signClose = document.getElementById("sign-up-close");
-
-//
-//
-sign.onclick = function() {
-    openSignUp.style.display = "block";
-}
-
-login.onclick = function() {
-    openLogin.style.display = "block";
-}
-//
-signClose.onclick = function() {
-        openSignUp.style.display = "none";
-}
-//
-loginClose.onclick = function() {
-    openLogin.style.display = "none";
-}
-//
-window.onclick = function(event) {
-    if (event.target == openSignUp) {
-        openSignUp.style.display = "none";
+var getUsers = function(userList,userETAs){
+    for (i=0;i<userList.length;i++){
+        addData(userList[i]);
     }
-    if (event.target == openLogin) {
-        openLogin.style.display = "none";
-    }
-}
+};
 
-var submitLogin = document.getElementById("send-login")
-
-submitLogin.onclick = function (){
-    if ()
-}
+var addNewCard = function(userData){
+    var container = document.getElementById("groups-page");
+    var pageTemplate = document.getElementById("homeTemplate");
+    var newElement =  pageTemplate.content.cloneNode(true);
+    var memberName = newElement.querySelector(".member-name");
+    memberName.innerHTML = userData.fName + userData.lName;
+    var ETA = newElement.querySelector(".eta");
+    ETA.innerHTML = "";
+    container.insertBefore( newElement, container.firstChild );
+};
 
 var createTracker = new() XMLHttpRequest();
 createTracker.onreadystatechange= function () {
     if (createTracker.readyState == XMLHttpRequest.DONE){
         if (createTracker.status < 400 && createTracker.status >=200) {
-
+            addData(createTracker.responseText);
         }
         else {
-            alert("is broken")
+            alert("is broken");
         }
     }
-    var query = "username="+document.getElementById(uname)+"&fname=" +document.getElementById(fname) + "&lname=" +document.getElementById(lname) + "&phone=" document.getElementById(phone)
+    var query = "username="+document.getElementById("new-user-name")+"&fname=" +document.getElementById("new-first-name") + "&lname=" +document.getElementById("new-last-name") + "&phone=" document.getElementById("new-user-phone")
     createTracker.open("POST", url);
     createTracker.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     createTracker.send(query);
 }
-//
-// var init = function () {
-//     var content = document.getElementById("content");
-//     content.innerHTML = "";
-//     var home = document.getElementById("homeTemplate");
-//     var homeView = home.content.cloneNode(true);
-//
-// }
-//
-// init()
+
+var init = function () {
+    var getDB = new() XMLHttpRequest();
+    getDB.onreadystatechange= function () {
+        if (getDB.readyState == XMLHttpRequest.DONE){
+            if (getDB.status < 400 && getDB.status >=200) {
+                getUsers(getDB.responseText);
+            }
+            else {
+                alert("is broken");
+            }
+        }
+        getDB.open("GET", url);
+        getDB.send();
+    }
+};
+init()

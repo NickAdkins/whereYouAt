@@ -31,8 +31,8 @@
         -->
                         <div class="event-card col-4 shadow row">
                             <div class="event-header row slim">
-                                <h2>[member-name]</h2>
-                                <p><strong>[eta]</strong></p>
+                                <h2 class="member-name"></h2>
+                                <p class="eta"><strong>[eta]</strong></p>
                             </div><!-- end event header-->
                         </div><!--end event-card -->
                     <div id="new-user" class="event-card shadow col-4 row">
@@ -43,12 +43,16 @@
                                 <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
                             </div>
                             <div class="row slim">
-                                <label for="new-user-name" class="left">Name</label>
+                                <label for="new-user-name" class="left">Username</label>
                                 <span class="shadow inline-field"><input id="new-user-name" type="text" value=""></span>
                             </div>
                             <div class="row slim">
-                                <label for="new-user-email" class="left">Email</label>
-                                <span class="shadow inline-field"><input id="new-user-email" type="text"></span>
+                                <label for="new-first-name" class="left">First Name</label>
+                                <span class="shadow inline-field"><input id="new-first-name" type="text" value=""></span>
+                            </div>
+                            <div class="row slim">
+                                <label for="new-last-name" class="left">Last Name</label>
+                                <span class="shadow inline-field"><input id="new-last-name" type="text" value=""></span>
                             </div>
                             <div class="row slim">
                                 <label for="new-user-phone" class="left">Phone</label>
