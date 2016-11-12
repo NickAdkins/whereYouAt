@@ -174,6 +174,27 @@ app.delete("/users", userrouter.deleteAll)
 app.delete("/users/:user", userrouter.deleteOne)
 
 
+//================= events routes ================
+var eventsrouter = require("./server/events/routes")
+
+app.get("/events", eventsrouter.index);
+app.get("/events/:event", eventsrouter.retrieve);
+app.post("/events", eventsrouter.create)
+app.put("/events/:event", eventsrouter.update)
+app.delete("/events", eventsrouter.deleteAll)
+app.delete("/events/:event", eventsrouter.deleteOne)
+
+// ================= groups routes ====================
+var grouproutes = require("./server/groups/routes")
+
+app.get("/groups", grouproutes.index);
+app.get("/groups/:group", grouproutes.retrieve);
+app.post("/groups", grouproutes.create)
+app.put("/groups/:group", grouproutes.update)
+app.delete("/groups", grouproutes.deleteAll)
+app.delete("/groups/:group", grouproutes.deleteOne)
+
+
 // app.get("/users", )
 
 
