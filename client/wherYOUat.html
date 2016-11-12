@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!-- saved from url=(0084)file:///Users/denisenadal/OneDrive/School/fall-2016/whereYouAt/client/groupHome.html -->
+<html lang="en" class="fa-events-icons-ready"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wherYOUat</title>
+  <script src="./wherYOUat_files/555d412a05.js"></script><link href="./wherYOUat_files/555d412a05.css" media="all" rel="stylesheet">
+  <link href="./wherYOUat_files/main.css" rel="stylesheet" type="text/css">
+  <link href="./wherYOUat_files/simple-grid-edited.css" rel="stylesheet" type="text/css">
+  <link href="./wherYOUat_files/css" rel="stylesheet">
+</head>
+<body>
+    <div id="main-content">
+        <header>
+            <div class="row">
+                <h1 id="app-logo" class="left">Where U At?</h1>
+                <ul id="nav" class="right">
+                    <li>Welcome, [username]</li>
+                    <li>Help</li>
+                </ul>
+            </div><!-- end header row -->
+        </header>
+        <main>
+            <div class="row">
+                <!-- repeat event-card for each event user is a member of
+                    only show event header in default view, show rest after user clicks on card-->
+                <div class="event-card">
+                    <div class="event-header">
+                        <h2>[event-name]</h2>
+                        <h3>[event-location]</h3>
+                        <h3>[event-date] @ [event-start-time]</h3>
+                    </div><!-- end event header-->
+                    <div class="event-description">
+                        <h3>Organized by: [admin-names]</h3>
+                        <p>[event-description]</p>
+                    </div><!-- end event description-->
+                    <div class="edit-event">
+                        <i id="edit-event-icon" class="fa fa-pencil edit-button admin-only" aria-hidden="true"></i>
+                        <!-- on click of edit-event-icon, load edit modal-
+                        modal should insert form fields from new-event, load data for current event -->
+                    </div><!-- end edit event-->
+                    <div class="event-groups">
+                        <!-- Repeat event-group for each group in event-->
+                        <div class="event-group">
+                            <!-- if captain, show captain-->
+                            <h3>Captain:[captain-name]</h3>
+                            <h3>Members</h3>
+                            <ul>
+                                <li>[member-name]</li>
+                            </ul>
+                            <div class="event-group-edit">
+                                <!-- each of these should generate a confirmation/modal-->
+                                <div class="button ac-only" id="add-member"><p>Add Member</p></div>
+                                <div class="button ac-only" id="remove-member"><p>Remove Member</p></div>
+                                <div class="button user-only" id="leave-group"><p>Leave Event</p></div>
+                            </div><!-- end group edit-->
+                        </div><!-- end group-->
+                        <!-- show icon in event view, when div is clicked, show contents-->
+                        <div class="add-group">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                            <label for="new-group-captain"></label><input type="text" id="new-group-captain" name="captain" value="">
+                            <label for="admin-check">Allow captain to edit event?</label><input type="checkbox" name="make-an-admin" id="make-admin" value="">
+                            <label for="new-group-member"></label><input type="text" name="new-g-member" id="new-group-member" value="">
+                            <!-- save button should exit new group modal-->
+                            <div class="save-button"><p>Save group</p></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- modal for adding new event-->
+                <div id="new-event" class="group-card">
+                    <h2>New Event</h2>
+                    <label for="new-event-name">Name of your event</label><input type="text" name="ne-name" id="new-event-name" value="">
+                    <label for="new-event-location">Location</label><input type="text" name="ne-location" id="new-event-location" value="">
+                    <label for="new-event-date">Event date</label><input type="date" name="ne-date" id="new-event-date" value="">
+                    <label for="new-event-start">When event starts</label><input type="text" name="ne-start" id="new-event-start" value="">
+                    <label for="new-event-end">When event ends</label><input type="text" name="ne-end" id="new-event-end" value="">
+                    <label for="new-event-notification">When to start tracking event</label><input type="text" name="ne-notif" id="new-event-notifcation" value="">
+                    <label for="new-event-description">Description of your event</label><textarea name="ne-description" id="new-event-description" rows="8" cols="40"></textarea>
+                    <label for="new-event-group">Name of your group:</label><input type="text" name="ne-group" id="new-event-group" value="">
+                    <!-- user should be able to hit enter, member is added, and field reverts to empty so more members can be added-->
+                    <label for="new-event-group">Add member:</label><input type="text" name="ne-group" id="new-event-group" value="">
+                    <label for="capt-check">Make Captain? (Allow member to edit group)</label><input type="checkbox" name="make-a-capt" id="make-capt" value="">
+                    <label for="admin-check">Make Admin?(Allow captain to edit event)</label><input type="checkbox" name="make-an-admin" id="make-admin" value="">
+                    <!-- save button should exit new event modal-->
+                    <div class="save-button"><p>Save changes</p></div>
+                </div>
+            </div><!-- END main row -->
+        </main>
+        <footer>
+            <div class="row">
+                <div id="about-app" class="col-6 col-6-sm">
+                    <h3>About</h3>
+                    <p>WhereUat is made with love by Team WeHere to help you with organizing your events.
+                </p></div><!--end about col -->
+                <div id="about-team" class="col-6 col-6-sm">
+                    <h3>About the Team</h3>
+                    <p>WeHere are a team of passionate coders and designers. Bredyn McCombs and Ross Salanoa handle the backend, and Nick Adkins and Denise Nadal handle the front end.</p>
+                </div><!-- end team col-->
+
+                <p class="center col-12">WhereUat? copyright 2016 of Team WeHere.</p>
+            </div><!-- end copyright row-->
+        </footer>
+    </div>
+
+
+</body></html>
