@@ -1,5 +1,6 @@
 var User = require("./model");
 var config = require("../../config");
+var bcrypt = require("bcryptjs");
 module.exports = {
     deleteOne: deleteUser,
     deleteAll: deleteAllUsers,
@@ -44,15 +45,17 @@ function retrieveUser (req, res) {
 
 function createUser (req, res) {
     // res.status(201).end('create');
+    var salt = bcrypt.genSaltSync(10);
     User.create({
         email:          req.body.email,
-        encryptedPass:  req.body.pwd,
+        encryptedPass:  bcrypt.hashSync(req.body.encryptedPass, salt),
         fName:          req.body.fName,
         lName:          req.body.lName,
-        phone:          req.body.phone
+        phone:          req.body.phone,
+        salt:           salt
 
     }, function (err, user) {
-        if (err) return reportError(err, res)
+        if (err){return reportError(err, res)} 
         res.status(201).json(user);
     })
 }
