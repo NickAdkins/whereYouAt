@@ -13,13 +13,14 @@ var bcrypt = require("bcryptjs");
 var LocalStrategy = require('passport-local').Strategy;
 var flash = require("connect-flash");
 
-mongoose.connect("mongodb://localhost/test");
+mongoose.connect("mongodb://localhost/whereuat");
 
 mongoose.connection.on("connected", function () {
     console.log("The magic is happening!".blue)
 })
 
 mongoose.connection.on("error", function (err) {
+    console.log(err)
     console.log("Sadly, the magic is gone... \n".red)
 })
 
@@ -38,7 +39,7 @@ app.use(skipper());
 //   resave: false,
 //   saveUninitialized: false
 // }))
-app.use(session({secret: "iwastesomuchtimeitsnotevenfunny"}))
+// app.use(session({secret: "iwastesomuchtimeitsnotevenfunny"}))
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
