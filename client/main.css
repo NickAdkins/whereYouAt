@@ -62,7 +62,6 @@ header, footer{
 
 .event-card,.group-card{
     background: #06a4ea;
-    padding:2rem;
     color:#f4f0e9 ;
 }
 
@@ -73,10 +72,11 @@ box-shadow:  0px 0px 2px 0px rgba(50, 50, 50, 0.75);}
     background:#ea432d;
     color:#ffb900;
     padding:1rem;
-    width:20rem;
+    max-width:20rem;
     border-radius:.25rem;
     border: 1px solid #ffb900;
     display: block;
+    margin-top: 2rem;
 }
 /*FORM ELEMENTS*/
 label + span{

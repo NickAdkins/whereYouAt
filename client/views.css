@@ -1,3 +1,4 @@
+/*login & sign up*/
 #welcome-screen h1{
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
@@ -23,6 +24,28 @@
     padding-left:1rem;
     color:#685c5c;
 }
-#sign-up input{
-
+/*groups page*/
+.event-header h2{
+    font-family: "Oswald", sans-serif;
+    font-size: 5rem;
+}
+.event-header strong{
+    font-size: 2.75rem;
+}
+.event-header p{
+    font-size: 2rem;
+}
+.group-card{
+    background: rgba(76,49,114,.3);
+}
+.edit-event{
+    color:#ffb900;
+    position: absolute;
+    top:1rem;
+    right:0rem;
+}
+i.remove-member{
+    display: inline;
+    color:#ffb900;
+    padding-left: 1rem;
 }

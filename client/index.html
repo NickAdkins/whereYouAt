@@ -90,58 +90,61 @@
                     </div>
                 </div>
             </div>
-            <div id="groups-page" class="row">
+            <div id="groups-page" class="row slim">
 <!-- repeat event-card for each event user is a member of only show event header in default view, show rest after user clicks on card-->
-                <div class="event-card col-4 shadow row">
-                    <div class="event-header">
+                <div class="event-card col-12 shadow row">
+                    <div class="event-header row slim">
                         <h2>[event-name]</h2>
                         <p><strong>[event-location]</strong><br>
                         [event-date] @ [event-start-time]</p>
                     </div><!-- end event header-->
-                    <div class="event-description">
+                    <div class="event-description row slim">
                         <h3>Organized by: [admin-names]</h3>
                         <p>[event-description]</p>
+                        <div class="edit-event">
+                            <i id="edit-event-icon" class="fa fa-pencil fa-3x edit-button admin-only" aria-hidden="true"></i>
+    <!-- on click of edit-event-icon, load edit modal- modal should insert form fields from new-event, load data for current event -->
+                        </div><!-- end edit event-->
                     </div><!-- end event description-->
-                    <div class="edit-event">
-                        <i id="edit-event-icon" class="fa fa-pencil edit-button admin-only" aria-hidden="true"></i>
-<!-- on click of edit-event-icon, load edit modal- modal should insert form fields from new-event, load data for current event -->
-                    </div><!-- end edit event-->
-                    <div class="event-groups">
+                    <div class="event-groups row slim">
     <!-- Repeat event-group for each group in event-->
-                        <div class="event-group group-card">
+                        <div class="event-group group-card shadow col-4 row">
                             <!-- if captain, show captain-->
                             <h3>Captain:[captain-name]</h3>
                             <h3>Members</h3>
                             <ul>
-                                <li>[member-name]</li>
+                                <li>[member-name] <i class="fa fa-minus-square remove-member" aria-hidden="true"></i></li>
                             </ul>
                             <div class="event-group-edit">
                                 <!-- each of these should generate a confirmation/modal-->
                                 <div class="button ac-only" id="add-member"><p>Add Member</p></div>
-                                <div class="button ac-only" id="remove-member"><p>Remove Member</p></div>
-                                <div class="button user-only" id="leave-group"><p>Leave Event</p></div>
                             </div><!-- end group edit-->
                         </div><!-- end group-->
     <!-- show icon in event view, when div is clicked, show contents-->
-                        <div class="add-group group-card">
+                        <div class="add-group group-card shadow col-8 row">
                             <i class="fa fa-plus" aria-hidden="true"></i>
-                            <label class="left" for="new-group-captain"></label>
-                            <span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
-                            <label class="left" for="add-make-admin">Allow captain to edit event?</label>
-                            <input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
-                            <label class="left" for="new-group-member"></label>
-                            <span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
-                            <!-- save button should exit new group modal-->
-                            <div class="save-button"><p>Save group</p></div>
+                            <h2>Add New Group</h2>
+                            <div class="add-group-form">
+                                <label class="left" for="new-group-captain"></label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" id="new-group-captain" name="captain" value=""></span>
+                                <label class="left" for="add-make-admin">Allow captain to edit event?</label>
+                                <input type="checkbox" name="make-an-admin" id="add-make-admin" value=""></span>
+                                <label class="left" for="new-group-member"></label>
+                                <span class="shadow inline-field"><input type="text" class="full-width" name="new-g-member" id="new-group-member" value=""></span>
+                                <!-- save button should exit new group modal-->
+                                <div class="row">
+                                    <div class="save-button center"><p>Save group</p></div>
+                                </div>
                         </div>
-                    </div>
-                </div>
+                        </div><!-- end add group card-->
+                    </div><!--end events-group row -->
+                </div><!--end event card -->
 <!-- modal for adding new event switch col size to at least 8 on modal-->
-                <div id="new-event" class="event-card shadow col-4">
+                <div id="new-event" class="event-card shadow col-8 row">
                     <i class="fa fa-plus fa-5x center" aria-hidden="true"></i>
                     <h2 class="col-12">New Event</h2>
                     <!-- form hidden on load, make visible on click-->
-                    <div class="new-event-form hidden">
+                    <div class="new-event-form col-12">
                         <div class="row slim">
                             <label class="left" for="new-event-name">Name of your event</label>
                             <span class="shadow inline-field"><input type="text" class="full-width" name="ne-name" id="new-event-name" value=""></span>
