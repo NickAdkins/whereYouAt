@@ -1,8 +1,20 @@
+**COLOR PALETTE**
+
 sky blue: #06a4ea       rgba(6,164,234,1)
 navy blue: #4c3172      rgba(76,49,114,1)
 mustard yellow: #ffb900 rgba(255,185,0,1)
 tomato red: #ea432d     rgba(234,67,45,1)
-off-white: 3f4f0e9      rgba(244,240,233,1)
+off-white: #f4f0e9      rgba(244,240,233,1)
 cream: #efe7d3          rgba(239,231,211,1)
 light gray: #a3b1b2     rgba(163,177,178,1)
 dark gray: #685c5c      rgba(104,92,92,1)
+
+**FONT & BOX SIZING**
+
+base body size: 12px
+font size: 1.5rem (18px)
+padding: 2rem (24px)
+
+**fonts**
+body: source sans regular
+logo: racing sans one
