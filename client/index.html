@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>wherYOUat</title>
   <script src="https://use.fontawesome.com/555d412a05.js"></script>
@@ -48,14 +49,24 @@
                 </div>
     <!-- login screen-->
                 <div id="loginBG" class="modalBG">
-                    <form id="login" action="/login">
-                        <label for="login-name" class="left">Name</label><input id="login-name" type="text">
-                        <label for="login-password" class="left">Password</label><input id="login-password" type="text">
-                        <input id="login-submit" type="submit">
-                        <div class="exit" id="login-close">
-                            <p>Exit</p><i class="fa fa-times" aria-hidden="true"></i>
+                    <form id="login" class="row" action="/login">
+                        <div class="exit right" id="login-close">
+                            <p>Exit<i class="fa fa-times" aria-hidden="true"></i></p>
+                        </div>
+                        <div class="row slim">
+                            <label for="login-name" class="left">Name</label>
+                            <span class="shadow inline-field"><input id="login-name" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                        <label for="login-password" class="left">Password</label>
+                        <span class="shadow inline-field"><input id="login-password" type="text"></span>
+                        </div>
+                        <div class="row slim">
+                            <input id="login-submit" class="button center" type="submit">
                         </div>
                     </form>
+
+
                 </div>
             </div>
             <template id="homeTemplate">
@@ -182,6 +193,8 @@
             </div><!-- end copyright row-->
         </footer>
     </div>
+    <div id="map-canvas"></div>
+    <!-- <script type="text/javascript" src="main.js" defer></script> -->
     <script src="whereYouAtJs.js"></script>
 </body>
 </html>
